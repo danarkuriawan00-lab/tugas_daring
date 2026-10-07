@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT SAHABAT - SDN GONDANG 1</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            500: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#0f294a',
+                            dark: '#0a192f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f294a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(30, 64, 175, 0.2) 0px, transparent 50%);
+            min-height: 100vh;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Glassmorphism styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-radio input[type="radio"]:checked + label {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .custom-radio input[type="radio"]:checked + label .option-badge {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* Formatting Pecahan Vertikal / Bertumpuk */
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 4px;
+            font-size: 0.95em;
+            line-height: 1.1;
+            position: relative;
+            top: -1px;
+        }
+        .frac .top {
+            border-bottom: 1.5px solid currentColor;
+            padding: 0 2px 1px 2px;
+            display: block;
+            font-weight: 700;
+        }
+        .frac .bottom {
+            padding: 1px 2px 0 2px;
+            display: block;
+            font-weight: 700;
+        }
+        .mixed-frac {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            gap: 2px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased flex flex-col justify-between min-h-screen">
+
+    <div id="app" class="w-full flex-grow flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 min-h-screen">
+        
+        <div id="portal-view" class="w-full max-w-xl my-auto transition-all duration-300">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/40 shadow-2xl relative overflow-hidden">
+                <!-- Decorative Top Border Accent -->
+                <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-sky-400"></div>
+
+                <!-- Header Logo and Titles -->
+                <div class="text-center mb-6 pt-2">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-blue-100 via-white to-sky-100 p-1 shadow-md mb-3 border border-blue-200">
+                        <div class="w-full h-full rounded-full bg-white flex items-center justify-center border border-slate-200 overflow-hidden relative p-1">
+                            <!-- Logo SDN Gondang 1 -->
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUAgnz3M-C0b4aP4NCccOVpRTBjimetBgZhyphenhyphenkGcMIcG3YY7RhacnjOZFFonylLQGbQ0LQHR7n4cOk7XN8mDb9YmRrXgJi5q7yZCEEKpQ4CYuB9WaZLCNw35_qVPvcRTizOMvZXsYVqmAOSfxDv9bUmpB9z_-2G3ecR_C1CONgsQ5-5U5NA2B9rpU4zfJnZ/w200-h200/sdn%20gng%201.png" 
+                                 alt="Logo SDN Gondang 1" 
+                                 class="w-full h-full object-contain"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/200x200/1e3a8a/ffffff?text=SDN+GONDANG+1';">
+                        </div>
+                    </div>
+                    <p class="text-xs font-bold tracking-widest text-slate-500 uppercase mb-1">SELAMAT DATANG DI PORTAL</p>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-brand-900 tracking-tight">CBT SAHABAT</h1>
+                    <h2 class="text-lg font-bold text-slate-700 mt-0.5">SDN GONDANG 1</h2>
+                    <p class="text-sm font-extrabold tracking-wider text-blue-700 mt-1">TUGAS DARING</p>
+                    <div class="w-20 h-1 bg-gradient-to-r from-amber-400 to-amber-500 mx-auto mt-2 rounded-full"></div>
+                </div>
+
+                <form id="loginForm" onsubmit="handleStartExam(event)" class="space-y-4">
+                    
+                    <!-- Input Nama Lengkap -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5" for="nama">
+                            NAMA LENGKAP
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fa-solid fa-user text-sm"></i>
+                            </div>
+                            <input type="text" id="nama" required placeholder="Masukkan nama lengkap Anda" 
+                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all placeholder:text-slate-400">
+                        </div>
+                    </div>
+
+                    <!-- Kelas & No Absen Row -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Select Kelas -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5" for="kelas">
+                                KELAS
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-school text-sm"></i>
+                                </div>
+                                <select id="kelas" required class="w-full pl-10 pr-8 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all appearance-none">
+                                    <option value="" disabled>Pilih kelas</option>
+                                    <option value="Kelas 1 A">Kelas 1 A</option>
+                                    <option value="Kelas 1 B">Kelas 1 B</option>
+                                    <option value="Kelas 2 A">Kelas 2 A</option>
+                                    <option value="Kelas 2 B">Kelas 2 B</option>
+                                    <option value="Kelas 3 A">Kelas 3 A</option>
+                                    <option value="Kelas 3 B">Kelas 3 B</option>
+                                    <option value="Kelas 4 A" selected>Kelas 4 A</option>
+                                    <option value="Kelas 4 B">Kelas 4 B</option>
+                                    <option value="Kelas 5 A">Kelas 5 A</option>
+                                    <option value="Kelas 5 B">Kelas 5 B</option>
+                                    <option value="Kelas 6 A">Kelas 6 A</option>
+                                    <option value="Kelas 6 B">Kelas 6 B</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input No Absen -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5" for="noAbsen">
+                                NO ABSEN
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-list-ol text-sm"></i>
+                                </div>
+                                <input type="number" id="noAbsen" required min="1" max="50" placeholder="Contoh: 07" 
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all placeholder:text-slate-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Tanggal Lahir -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5" for="tanggalLahir">
+                            TANGGAL LAHIR
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fa-solid fa-calendar-days text-sm"></i>
+                            </div>
+                            <input type="date" id="tanggalLahir" required 
+                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all text-slate-700">
+                        </div>
+                    </div>
+
+                    <!-- Input Mata Pelajaran -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5" for="mapel">
+                            MATA PELAJARAN
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fa-solid fa-book-open text-sm"></i>
+                            </div>
+                            <select id="mapel" required
+                                class="w-full pl-10 pr-8 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all appearance-none">
+                                <option value="" disabled selected>Pilih mata pelajaran</option>
+                                <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                                <option value="Matematika">Matematika</option>
+                                <option value="IPAS">IPAS</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-3">
+                        <button type="submit" class="w-full py-3.5 px-6 bg-gradient-to-r from-brand-900 to-blue-800 hover:from-blue-900 hover:to-brand-900 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center space-x-2 text-base tracking-wide">
+                            <span>MULAI UJIAN</span>
+                            <i class="fa-solid fa-circle-play text-amber-400 ml-1 text-lg"></i>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+                <a href="https://docs.google.com/spreadsheets/d/18uQ6eXOYGkDYy-Z_JwDGkjf9LYwpMlHLCtWt5G35vtw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800/90 hover:bg-slate-800 text-amber-400 text-xs font-bold rounded-xl border border-slate-700/80 backdrop-blur transition-all shadow-md">
+                    <i class="fa-solid fa-file-excel text-emerald-400 text-sm"></i>
+                    <span>Buka Rekap Nilai (Google Sheets)</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+                <button onclick="openScriptModal()" class="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold rounded-xl border border-slate-700/60 backdrop-blur transition-all" title="Atur Web App URL Google Apps Script">
+                    <i class="fa-solid fa-gear text-amber-400"></i>
+                    <span id="script-status-badge">Script URL: Terhubung ✓</span>
+                </button>
+            </div>
+
+            <p class="text-center text-xs text-slate-300 mt-3 font-medium opacity-80">
+                &copy; 2026 CBT Sahabat SDN Gondang 1. All Rights Reserved.
+            </p>
+        </div>
+
+        <div id="script-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-100 text-slate-800 relative animate-in fade-in zoom-in duration-200">
+                <button onclick="closeScriptModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Pengaturan Auto-Save Spreadsheet</h3>
+                        <p class="text-xs text-slate-500">Hubungkan CBT dengan Google Sheets Anda</p>
+                    </div>
+                </div>
+
+                <!-- Visual Status Indicator -->
+                <div id="modal-status-box" class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center gap-2 mb-4 font-semibold">
+                    <i id="modal-status-icon" class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                    <span id="modal-status-text">Status: Web App URL Tersimpan & Siap Digunakan!</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" for="input-script-url">
+                            Google Apps Script Web App URL:
+                        </label>
+                        <input type="url" id="input-script-url" placeholder="https://script.google.com/macros/s/.../exec" 
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-xs font-mono focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+
+                    <!-- Guidance Accordion -->
+                    <details class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-600">
+                        <summary class="font-bold text-blue-700 cursor-pointer flex items-center justify-between">
+                            <span><i class="fa-solid fa-code text-xs mr-1"></i> Kode Google Apps Script (Copy & Paste)</span>
+                            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                        </summary>
+                        <div class="mt-2 space-y-2 text-[11px] font-mono bg-slate-900 text-slate-200 p-3 rounded-lg overflow-x-auto">
+<pre>function doPost(e) {
+  try {
+    var spreadsheet = SpreadsheetApp.openById("18uQ6eXOYGkDYy-Z_JwDGkjf9LYwpMlHLCtWt5G35vtw");
+    var sheet = spreadsheet.getSheets()[0];
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      data.waktuSelesai,
+      data.nama,
+      data.kelas,
+      data.noAbsen,
+      data.tanggalLahir,
+      data.mapel,
+      data.nilai,
+      data.ringkasan
+    ]);
+    return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+  } catch (error) {
+    return ContentService.createTextOutput("Error: " + error.message).setMimeType(ContentService.MimeType.TEXT);
+  }
+}</pre>
+                        </div>
+                        <p class="mt-2 text-[11px] text-slate-500">
+                            *Gunakan ID spreadsheet di kode dan pastikan Web App pada URL bawaan di atas sudah memakai ID tersebut. Deploy sebagai versi baru dengan <b>Execute as: Me</b> dan <b>Who has access: Anyone</b>, agar siswa dengan akun/profil Chrome berbeda tetap dapat mengirim hasil ke spreadsheet yang sama. URL kustom yang disimpan melalui pengaturan hanya berlaku pada browser tersebut.
+                        </p>
+                    </details>
+
+                    <div class="flex gap-2 pt-2">
+                        <button onclick="saveScriptUrl()" class="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Simpan Web App URL</span>
+                        </button>
+                        <button onclick="clearScriptUrl()" class="px-4 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition-all">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Peringatan Berpindah Tab -->
+        <div id="tab-warning-modal" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm hidden z-[60] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="tab-warning-title" aria-describedby="tab-warning-message">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-white/60 text-center">
+                <div id="tab-warning-icon-wrap" class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mx-auto mb-4">
+                    <i id="tab-warning-icon" class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <p id="tab-warning-count" class="text-xs font-extrabold uppercase tracking-widest text-amber-600 mb-2">Peringatan 1 dari 2</p>
+                <h3 id="tab-warning-title" class="text-xl font-extrabold text-slate-900 mb-2">Jangan Berpindah Tab</h3>
+                <p id="tab-warning-message" class="text-sm leading-relaxed text-slate-600 mb-6">Anda meninggalkan halaman ujian. Tetap berada di halaman ujian agar pengerjaan dapat berlangsung dengan tertib.</p>
+                <button id="tab-warning-button" onclick="closeTabWarningModal()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm rounded-xl shadow-md transition-all">Saya Mengerti</button>
+            </div>
+        </div>
+
+        <!-- Modal Konfirmasi Selesai Ujian -->
+        <div id="finish-confirm-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-100 text-slate-800 relative animate-in fade-in zoom-in duration-200 text-center">
+                <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Konfirmasi Selesai Ujian</h3>
+                <p class="text-xs text-slate-600 mb-4" id="finish-modal-warning-text">Apakah Anda yakin ingin menyelesaikan ujian ini?</p>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-left space-y-2 text-xs font-semibold mb-6">
+                    <div class="flex justify-between text-slate-700">
+                        <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i>Sudah Dijawab:</span>
+                        <span id="finish-stat-answered" class="font-bold text-slate-900">0 Soal</span>
+                    </div>
+                    <div class="flex justify-between text-slate-700">
+                        <span><i class="fa-solid fa-circle-xmark text-rose-500 mr-1.5"></i>Belum Dijawab:</span>
+                        <span id="finish-stat-unanswered" class="font-bold text-rose-600">0 Soal</span>
+                    </div>
+                    <div class="flex justify-between text-slate-700">
+                        <span><i class="fa-solid fa-square-check text-amber-500 mr-1.5"></i>Ragu-Ragu:</span>
+                        <span id="finish-stat-doubtful" class="font-bold text-amber-600">0 Soal</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <button onclick="closeFinishModal()" class="flex-1 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-sm rounded-xl transition-all">
+                        Batal
+                    </button>
+                    <button onclick="executeSubmitExam()" class="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Ya, Selesai</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="exam-view" class="hidden w-full max-w-7xl mx-auto flex-col flex-grow gap-4 min-h-[calc(100vh-2rem)] py-2">
+            
+            <!-- Top Navigation Header Info -->
+            <header class="bg-slate-900/95 text-white p-4 rounded-2xl shadow-xl border border-slate-700/50 backdrop-blur flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-inner">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h2 id="disp-student-name" class="font-bold text-base text-white leading-tight">Nama Siswa</h2>
+                        <p class="text-xs text-slate-300 flex items-center gap-2 mt-0.5">
+                            <span id="disp-student-class" class="bg-blue-900/80 text-blue-200 px-2 py-0.5 rounded text-[11px] font-semibold">Kelas X</span>
+                            <span id="disp-student-no" class="text-slate-300">Absen: --</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <!-- Subject Badge -->
+                    <div class="hidden sm:block text-right pr-3 border-r border-slate-700">
+                        <p id="disp-mapel" class="text-xs font-bold text-amber-400">Matematika</p>
+                        <p id="disp-ttl" class="text-[11px] text-slate-300 truncate max-w-[220px]">Tgl Lahir: -</p>
+                    </div>
+
+                    <!-- Countdown Timer -->
+                    <div class="bg-slate-800 border border-slate-700 px-3.5 py-1.5 rounded-xl flex items-center space-x-2.5 shadow-inner">
+                        <i class="fa-solid fa-clock text-amber-400 animate-pulse text-base"></i>
+                        <div>
+                            <p class="text-[10px] text-slate-400 uppercase font-semibold leading-none">Sisa Waktu</p>
+                            <span id="timer" class="font-mono font-bold text-lg text-white leading-none">60:00</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Grid (Full Width 12 Columns Layout) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 flex-grow items-stretch">
+                
+                <!-- Left Panel: Question Box & Choices (8-9 Cols) -->
+                <div class="lg:col-span-8 xl:col-span-9 flex flex-col gap-4 flex-grow">
+                    <div class="glass-card rounded-2xl p-5 sm:p-8 border border-slate-200 flex-grow flex flex-col justify-between shadow-xl">
+                        
+                        <!-- Question Header -->
+                        <div>
+                            <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3.5 py-1.5 rounded-full flex items-center gap-1.5">
+                                    <i class="fa-solid fa-file-lines text-blue-600"></i>
+                                    <span id="question-section-badge">Soal</span> No. <span id="current-q-num">1</span> dari <span id="total-q-num">25</span>
+                                </span>
+                                
+                                <button onclick="toggleDoubtful()" id="btn-doubt" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-amber-300 text-amber-700 bg-amber-50 hover:bg-amber-100 transition-all flex items-center gap-1.5">
+                                    <i class="fa-regular fa-square" id="doubt-icon"></i>
+                                    <span>Ragu-ragu</span>
+                                </button>
+                            </div>
+
+                            <!-- Question Text -->
+                            <div class="text-base sm:text-xl font-medium text-slate-800 leading-relaxed mb-4" id="question-text">
+                                Loading question...
+                            </div>
+
+                            <!-- Options List -->
+                            <div id="options-container" class="space-y-3 my-4">
+                                <!-- Options dynamically rendered -->
+                            </div>
+                        </div>
+
+                        <!-- Footer Navigation Buttons -->
+                        <div class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 mt-6">
+                            <button onclick="prevQuestion()" id="btn-prev" class="px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-bold rounded-xl transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <span>Sebelumnya</span>
+                            </button>
+
+                            <button onclick="nextQuestion()" id="btn-next" class="px-7 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl transition-all shadow-md flex items-center gap-2 ml-auto">
+                                <span>Selanjutnya</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                            <button onclick="confirmSubmitExam()" id="btn-finish" class="hidden px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition-all shadow-md items-center gap-2 ml-auto">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Selesai Ujian</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 xl:col-span-3 flex flex-col">
+                    <div class="glass-card rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xl flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-grip text-blue-600"></i>
+                                Navigasi Soal (25 Soal)
+                            </h3>
+                            
+                            <!-- Grid Buttons -->
+                            <div id="nav-grid" class="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-4 xl:grid-cols-5 gap-2 max-h-[420px] overflow-y-auto pr-1">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Legend Status -->
+                        <div class="mt-6 pt-4 border-t border-slate-200 space-y-2.5 text-xs font-medium text-slate-600">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-lg bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold shadow-sm">1</span>
+                                <span>Sudah Dijawab</span>
+                            </div>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-lg bg-amber-400 text-slate-900 flex items-center justify-center text-[10px] font-bold shadow-sm">2</span>
+                                <span>Ragu-Ragu</span>
+                            </div>
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-lg bg-slate-100 border border-slate-300 text-slate-600 flex items-center justify-center text-[10px] font-bold">3</span>
+                                <span>Belum Dijawab</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="result-view" class="hidden w-full max-w-xl mx-auto my-auto transition-all duration-300">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/40 shadow-2xl text-center">
+                
+                <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 text-3xl shadow-inner border border-emerald-200">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+
+                <h2 class="text-2xl font-extrabold text-slate-800">Ujian Selesai!</h2>
+                <p class="text-sm text-slate-500 mb-6">Terima kasih telah menyelesaikan ujian ini tepat waktu.</p>
+
+                <!-- Student summary info card -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-6 text-left space-y-2 text-sm">
+                    <div class="flex justify-between border-b border-slate-200 pb-2">
+                        <span class="text-slate-500 font-medium">Nama Siswa:</span>
+                        <span id="res-nama" class="font-bold text-slate-800">-</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-200 pb-2">
+                        <span class="text-slate-500 font-medium">Kelas / Absen:</span>
+                        <span id="res-kelas" class="font-bold text-slate-800">-</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-200 pb-2">
+                        <span class="text-slate-500 font-medium">Tanggal Lahir:</span>
+                        <span id="res-ttl" class="font-bold text-slate-800">-</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-200 pb-2">
+                        <span class="text-slate-500 font-medium">Mata Pelajaran:</span>
+                        <span id="res-mapel" class="font-bold text-blue-700">-</span>
+                    </div>
+                </div>
+
+                <!-- Big Score Display -->
+                <div class="bg-gradient-to-br from-brand-900 to-blue-800 text-white rounded-2xl p-6 mb-4 shadow-lg">
+                    <p class="text-xs uppercase tracking-widest text-blue-200 font-bold mb-1">Nilai Akhir Anda</p>
+                    <div class="text-5xl font-extrabold text-amber-400 my-1" id="res-score">100</div>
+                    <p class="text-xs text-slate-200" id="res-summary">Benar 40 dari 40 Soal</p>
+                </div>
+
+                <div id="post-status-message" class="text-xs text-slate-500 mb-4 font-semibold">
+                    Sending results to spreadsheet...
+                </div>
+
+                <!-- Action Button -->
+                <button onclick="resetExam()" class="w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Kembali ke Halaman Utama</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const mathQuestions = [
+            { id: 1, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan yang senilai dengan 1/2 adalah ....', options: [{ key: 'A', text: '2/3' }, { key: 'B', text: '2/4' }, { key: 'C', text: '3/5' }, { key: 'D', text: '4/6' }], correct: 'B' },
+            { id: 2, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 2/3 senilai dengan ....', options: [{ key: 'A', text: '4/5' }, { key: 'B', text: '4/6' }, { key: 'C', text: '6/8' }, { key: 'D', text: '8/10' }], correct: 'B' },
+            { id: 3, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan yang senilai dengan 3/4 adalah ....', options: [{ key: 'A', text: '6/8' }, { key: 'B', text: '5/8' }, { key: 'C', text: '9/16' }, { key: 'D', text: '12/20' }], correct: 'A' },
+            { id: 4, type: 'pg', section: 'Pilihan Ganda', question: '2/5 = .../15', options: [{ key: 'A', text: '4' }, { key: 'B', text: '5' }, { key: 'C', text: '6' }, { key: 'D', text: '8' }], correct: 'C' },
+            { id: 5, type: 'pg', section: 'Pilihan Ganda', question: '3/7 = 12/...', options: [{ key: 'A', text: '21' }, { key: 'B', text: '24' }, { key: 'C', text: '28' }, { key: 'D', text: '35' }], correct: 'C' },
+            { id: 6, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 4/9 senilai dengan ....', options: [{ key: 'A', text: '8/18' }, { key: 'B', text: '12/20' }, { key: 'C', text: '16/27' }, { key: 'D', text: '20/36' }], correct: 'A' },
+            { id: 7, type: 'pg', section: 'Pilihan Ganda', question: '5/6 = .../18', options: [{ key: 'A', text: '10' }, { key: 'B', text: '12' }, { key: 'C', text: '15' }, { key: 'D', text: '16' }], correct: 'C' },
+            { id: 8, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 7/8 senilai dengan ....', options: [{ key: 'A', text: '14/16' }, { key: 'B', text: '21/32' }, { key: 'C', text: '28/40' }, { key: 'D', text: '35/48' }], correct: 'A' },
+            { id: 9, type: 'pg', section: 'Pilihan Ganda', question: '3/5 = 18/...', options: [{ key: 'A', text: '20' }, { key: 'B', text: '25' }, { key: 'C', text: '30' }, { key: 'D', text: '35' }], correct: 'C' },
+            { id: 10, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 4/7 senilai dengan ....', options: [{ key: 'A', text: '8/12' }, { key: 'B', text: '12/21' }, { key: 'C', text: '16/24' }, { key: 'D', text: '20/28' }], correct: 'B' },
+            { id: 11, type: 'pg', section: 'Pilihan Ganda', question: '5/9 = .../27', options: [{ key: 'A', text: '10' }, { key: 'B', text: '12' }, { key: 'C', text: '15' }, { key: 'D', text: '18' }], correct: 'C' },
+            { id: 12, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan yang senilai dengan 6/11 adalah ....', options: [{ key: 'A', text: '12/22' }, { key: 'B', text: '18/30' }, { key: 'C', text: '24/40' }, { key: 'D', text: '30/44' }], correct: 'A' },
+            { id: 13, type: 'pg', section: 'Pilihan Ganda', question: '2/7 = 10/...', options: [{ key: 'A', text: '21' }, { key: 'B', text: '28' }, { key: 'C', text: '35' }, { key: 'D', text: '42' }], correct: 'C' },
+            { id: 14, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 8/12 senilai dengan ....', options: [{ key: 'A', text: '2/3' }, { key: 'B', text: '3/4' }, { key: 'C', text: '4/5' }, { key: 'D', text: '5/6' }], correct: 'A' },
+            { id: 15, type: 'pg', section: 'Pilihan Ganda', question: '3/8 = 15/...', options: [{ key: 'A', text: '24' }, { key: 'B', text: '30' }, { key: 'C', text: '35' }, { key: 'D', text: '40' }], correct: 'B' },
+            { id: 16, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan yang senilai dengan 9/10 adalah ....', options: [{ key: 'A', text: '18/20' }, { key: 'B', text: '27/40' }, { key: 'C', text: '36/50' }, { key: 'D', text: '45/60' }], correct: 'A' },
+            { id: 17, type: 'pg', section: 'Pilihan Ganda', question: '4/5 = 20/...', options: [{ key: 'A', text: '15' }, { key: 'B', text: '20' }, { key: 'C', text: '25' }, { key: 'D', text: '30' }], correct: 'C' },
+            { id: 18, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 5/8 senilai dengan ....', options: [{ key: 'A', text: '10/12' }, { key: 'B', text: '15/20' }, { key: 'C', text: '20/32' }, { key: 'D', text: '25/35' }], correct: 'C' },
+            { id: 19, type: 'pg', section: 'Pilihan Ganda', question: '7/9 = 21/...', options: [{ key: 'A', text: '18' }, { key: 'B', text: '24' }, { key: 'C', text: '27' }, { key: 'D', text: '30' }], correct: 'C' },
+            { id: 20, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan yang senilai dengan 3/10 adalah ....', options: [{ key: 'A', text: '6/15' }, { key: 'B', text: '9/30' }, { key: 'C', text: '12/35' }, { key: 'D', text: '15/40' }], correct: 'B' },
+            { id: 21, type: 'pg', section: 'Pilihan Ganda', question: '6/7 = 24/...', options: [{ key: 'A', text: '21' }, { key: 'B', text: '24' }, { key: 'C', text: '28' }, { key: 'D', text: '32' }], correct: 'C' },
+            { id: 22, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 10/15 senilai dengan ....', options: [{ key: 'A', text: '1/2' }, { key: 'B', text: '2/3' }, { key: 'C', text: '3/4' }, { key: 'D', text: '4/5' }], correct: 'B' },
+            { id: 23, type: 'pg', section: 'Pilihan Ganda', question: '5/12 = 20/...', options: [{ key: 'A', text: '36' }, { key: 'B', text: '40' }, { key: 'C', text: '45' }, { key: 'D', text: '48' }], correct: 'B' },
+            { id: 24, type: 'pg', section: 'Pilihan Ganda', question: 'Pecahan 12/16 senilai dengan ....', options: [{ key: 'A', text: '2/3' }, { key: 'B', text: '3/4' }, { key: 'C', text: '4/5' }, { key: 'D', text: '5/6' }], correct: 'B' },
+            { id: 25, type: 'pg', section: 'Pilihan Ganda', question: '7/10 = 28/...', options: [{ key: 'A', text: '30' }, { key: 'B', text: '35' }, { key: 'C', text: '40' }, { key: 'D', text: '45' }], correct: 'C' }
+        ];
+        const makeQuestions = (section, rows) => rows.map((row, index) => ({
+            id: index + 1,
+            type: 'pg',
+            section,
+            question: row[0],
+            options: row.slice(1, 5).map((text, optionIndex) => ({ key: 'ABCD'[optionIndex], text })),
+            correct: row[5]
+        }));
+
+        const ipasQuestions = makeQuestions('IPAS', [
+            ['Politik Etis muncul sebagai bentuk respon atas kritik terhadap kebijakan...', 'Kerja paksa (Rodi)', 'Sistem tanam paksa (Cultuurstelsel)', 'Penjualan tanah rakyat', 'Monopoli perdagangan VOC', 'B'],
+            ['Kebijakan sistem tanam paksa (Cultuurstelsel) diterapkan oleh pemerintah Belanda di...', 'Hindia Belanda', 'Maluku', 'Singapura', 'Filipina', 'A'],
+            ['Berdasarkan teks, rakyat Indonesia yang memiliki lahan dalam sistem tanam paksa diwajibkan menanam tanaman ekspor sebesar...', '10% dari hasil tanamannya', '15% dari hasil tanamannya', '20% dari hasil tanamannya', '50% dari hasil tanamannya', 'C'],
+            ['Berikut ini yang bukan merupakan tanaman ekspor yang wajib ditanam pada masa tanam paksa sesuai teks adalah...', 'Kopi dan Teh', 'Nila dan Kakao', 'Padi dan Jagung', 'Kopi dan Kakao', 'C'],
+            ['Bagi rakyat yang tidak memiliki lahan pada masa tanam paksa, mereka diwajibkan bekerja di...', 'Pabrik senjata Belanda', 'Perkebunan-perkebunan milik Belanda', 'Kapal-kapal dagang Belanda', 'Istana Gubernur Jenderal', 'B'],
+            ['Mengapa kebijakan tanam paksa dinilai sangat merugikan rakyat Hindia Belanda?', 'Karena rakyat tidak diberi gaji sama sekali', 'Karena hasil bumi dijual ke negara lain', 'Karena menyengsarakan rakyat sehingga Belanda dianggap harus membalas budi', 'Karena lahan pertanian rakyat disita secara permanen', 'C'],
+            ['Tokoh yang menulis buku berjudul Max Havelaar adalah...', 'Conrad Theodore Van Deventer', 'Eduard Douwes Dekker', 'Pieter Brooshooft', 'Baron van Hoevell', 'B'],
+            ['Nama samaran dari Eduard Douwes Dekker adalah...', 'Multatuli', 'Van Deventer', 'Brooshooft', 'Danudirja Setiabudi', 'A'],
+            ['Buku Max Havelaar menceritakan tentang...', 'Kejayaan kerajaan-kerajaan di Nusantara', 'Penderitaan masyarakat Banten akibat tanam paksa', 'Tata cara bertanam kopi dan teh', 'Riwayat hidup para pegawai Belanda', 'B'],
+            ['Pengalaman Eduard Douwes Dekker yang menjadi latar belakang penulisan bukunya adalah pernah tinggal di Banten sebagai...', 'Wartawan', 'Pegawai Belanda', 'Ahli hukum', 'Guru', 'B'],
+            ['Conrad Theodore Van Deventer adalah seorang politisi dan ahli...', 'Hukum', 'Pertanian', 'Jurnalistik', 'Militer', 'A'],
+            ['Menurut Conrad Theodore Van Deventer, Belanda memiliki utang kehormatan sehingga harus membalas budi dengan cara...', 'Mengembalikan seluruh hasil tanam paksa', 'Meningkatkan kesejahteraan rakyat Hindia Belanda', 'Memberikan kemerdekaan langsung kepada Indonesia', 'Membangun pabrik-pabrik modern', 'B'],
+            ['Pieter Brooshooft adalah seorang tokoh kritis Belanda yang berprofesi sebagai...', 'Dokter dan sastrawan', 'Wartawan dan sastrawan', 'Politisi dan tentara', 'Ahli hukum dan guru', 'B'],
+            ['Pieter Brooshooft melakukan perjalanan mengelilingi Pulau Jawa pada tahun...', '1877', '1887', '1899', '1901', 'B'],
+            ['Laporan penyimpangan sistem tanam paksa yang didokumentasikan oleh Pieter Brooshooft disampaikan kepada...', '10 orang politisi Belanda', '12 orang politisi Belanda', 'Gubernur Jenderal Hindia Belanda', 'Raja Belanda', 'B'],
+            ['Kebijakan Politik Etis yang dikeluarkan oleh pemerintah Belanda juga dikenal dengan nama...', 'Trias Politika', 'Trias Van Deventer', 'Tanam Paksa', 'Cultuurstelsel', 'B'],
+            ['Tiga kebijakan yang terkandung dalam Trias Van Deventer adalah...', 'Irigasi, Edukasi, dan Emigrasi', 'Irigasi, Industri, dan Edukasi', 'Edukasi, Transmigrasi, dan Monopoli', 'Emigrasi, Agraria, dan Irigasi', 'A'],
+            ['Tujuan utama dari program Irigasi dalam Politik Etis adalah...', 'Membangun jalan raya antar kota', 'Meningkatkan kesejahteraan rakyat melalui pembangunan dan perbaikan pengairan pertanian', 'Menyediakan air bersih untuk perumahan Belanda', 'Mengeringkan lahan rawa untuk pemukiman', 'B'],
+            ['Salah satu bentuk fisik pembangunan dalam program irigasi adalah...', 'Bendungan', 'Pelabuhan', 'Sekolah rakyat', 'Pabrik gula', 'A'],
+            ['Program Edukasi dalam Politik Etis dilakukan dengan cara...', 'Mengirim pelajar Indonesia ke Belanda', 'Membentuk sekolah-sekolah rakyat agar rakyat pribumi dapat membaca', 'Memberikan kursus bertani modern', 'Membuka perpustakaan umum di setiap daerah', 'B'],
+            ['Dampak positif terbukanya akses pendidikan (Edukasi) bagi rakyat pribumi adalah...', 'Rakyat pribumi diangkat menjadi pejabat tinggi Belanda', 'Menjadi awal mula pergerakan nasional untuk melawan penjajahan', 'Hilangnya bahasa daerah di Indonesia', 'Rakyat pribumi diwajibkan berbahasa Belanda', 'B'],
+            ['Program Emigrasi dilakukan dengan cara memindahkan sebagian penduduk dari...', 'Jawa dan Madura ke Pulau Sumatra dan pulau-pulau lain', 'Sumatra ke Pulau Jawa', 'Jawa ke negara Belanda', 'Kalimantan ke Pulau Jawa dan Madura', 'A'],
+            ['Salah satu tujuan dilaksanakannya program Emigrasi adalah...', 'Membuka lahan perkebunan tebu baru di Jawa', 'Mengurangi jumlah penduduk Pulau Jawa dan Madura yang semakin banyak', 'Mengumpulkan tenaga kerja untuk tentara Belanda', 'Memisahkan rakyat pribumi dari pemukiman Belanda', 'B'],
+            ['Fasilitas yang disediakan Belanda bagi masyarakat yang dipindahkan dalam program Emigrasi adalah...', 'Rumah mewah dan kendaraan', 'Lahan untuk diolah dan ditinggali', 'Modal uang yang sangat besar', 'Alat-alat mesin modern', 'B'],
+            ['Kritik dari para tokoh seperti Eduard Douwes Dekker, Van Deventer, dan Pieter Brooshooft pada akhirnya berhasil mendesak pemerintah Belanda untuk...', 'Menghentikan perdagangan kopi dan teh', 'Mengeluarkan kebijakan Politik Etis (Politik Balas Budi)', 'Memberikan kemerdekaan penuh kepada Hindia Belanda', 'Memindahkan ibu kota Hindia Belanda', 'B']
+        ]);
+
+        const newMathQuestions = makeQuestions('Matematika', [
+            ['Perbandingan antara dua atau lebih angka yang menunjukkan ukuran atau kuantitas benda tertentu dinamakan...', 'Persentase', 'Rasio', 'Pecahan biasa', 'Desimal', 'B'],
+            ['Rasio antara besaran a dan b dapat ditulis dalam bentuk...', 'a + b atau a × b', 'a − b atau b − a', 'a : b atau a/b', 'a = b atau a ≠ b', 'C'],
+            ['Bentuk penulisan a : b dibaca sebagai...', 'Rasio a ditambah b', 'Rasio a dikali b', 'Rasio a terhadap b', 'Rasio a dikurangi b', 'C'],
+            ['Paket A berisi 5 buah kue seharga Rp60.000,00. Harga per kue pada Paket A adalah...', 'Rp10.000,00', 'Rp11.000,00', 'Rp12.000,00', 'Rp15.000,00', 'C'],
+            ['Paket B berisi 8 buah kue seharga Rp80.000,00. Harga per kue pada Paket B adalah...', 'Rp10.000,00', 'Rp12.000,00', 'Rp14.000,00', 'Rp16.000,00', 'A'],
+            ['Berdasarkan perbandingan harga per kue antara Paket A (Rp12.000,00/kue) dan Paket B (Rp10.000,00/kue), pernyataan yang benar adalah...', 'Paket A lebih murah daripada Paket B', 'Paket B lebih murah daripada Paket A', 'Kedua paket harganya sama murahnya', 'Paket B lebih mahal daripada Paket A', 'B'],
+            ['Bu Alifiyah menggunakan 5 telur untuk membuat 1 adonan kue. Rasio telur terhadap adonan kue tersebut adalah...', '1 : 5', '5 : 1', '5 : 3', '1 : 3', 'B'],
+            ['Jika rasio telur terhadap adonan kue adalah 5 : 1, maka jumlah telur yang dibutuhkan Bu Alifiyah untuk membuat 3 adonan kue adalah...', '10 telur', '12 telur', '15 telur', '20 telur', 'C'],
+            ['Jika Bu Alifiyah ingin membuat 10 adonan kue dengan rasio 5 : 1, jumlah telur yang dibutuhkan adalah...', '25 telur', '30 telur', '40 telur', '50 telur', 'D'],
+            ['Setiap 1 lampu taman diberi jarak oleh 2 pohon cemara. Rasio lampu taman terhadap pohon cemara adalah...', '2 : 1', '1 : 2', '1 : 3', '3 : 1', 'B'],
+            ['Jika rasio lampu taman terhadap pohon cemara adalah 1 : 2 dan terdapat 17 lampu taman, maka banyaknya pohon cemara adalah...', '17 pohon', '24 pohon', '34 pohon', '51 pohon', 'C'],
+            ['Jika terdapat 12 pohon cemara dengan rasio lampu taman terhadap pohon cemara 1 : 2, maka banyaknya lampu taman adalah...', '6 lampu', '12 lampu', '18 lampu', '24 lampu', 'A'],
+            ['Bu Mita menggunakan 500 gram gula pasir untuk menghasilkan 4 teko teh manis. Rasio volume teh manis terhadap gula pasir sebelum disederhanakan adalah...', '4 : 500', '500 : 4', '1 : 500', '4 : 125', 'A'],
+            ['Bentuk sederhana dari rasio 4 teko teh manis terhadap 500 gram gula pasir adalah...', '1 : 100', '1 : 125', '1 : 250', '1 : 500', 'B'],
+            ['Berdasarkan rasio sederhana 1 : 125, banyaknya gula pasir yang dibutuhkan untuk membuat 2 teko teh manis adalah...', '200 gram', '250 gram', '300 gram', '350 gram', 'B'],
+            ['Jika tersedia 750 gram gula pasir dengan rasio teh manis terhadap gula pasir 1 : 125, teko teh manis yang dapat dihasilkan adalah...', '4 teko', '5 teko', '6 teko', '8 teko', 'C'],
+            ['Di sebuah kelas terdapat 10 pensil dan 20 penghapus. Rasio pensil terhadap penghapus adalah...', '1 : 2', '2 : 1', '1 : 3', '1 : 4', 'A'],
+            ['Paket B berisi 8 buah kue seharga Rp80.000,00. Jika membeli 4 buah kue dengan harga satuan yang sama, berapa uang yang harus dibayar?', 'Rp30.000,00', 'Rp40.000,00', 'Rp50.000,00', 'Rp60.000,00', 'B'],
+            ['Jika rasio siswa laki-laki terhadap perempuan adalah 2 : 3 dan jumlah siswa laki-laki 10 orang, berapa jumlah siswa perempuan?', '12 orang', '15 orang', '18 orang', '20 orang', 'B'],
+            ['Resep membutuhkan 2 teko teh manis untuk setiap 250 gram gula pasir. Jika digunakan 500 gram gula pasir, berapa teko teh manis yang dihasilkan?', '3 teko', '4 teko', '5 teko', '6 teko', 'B'],
+            ['Dalam membandingkan harga per kue pada Paket A dan Paket B, konsep matematika yang diterapkan adalah...', 'Skala peta', 'Rasio atau perbandingan', 'Persamaan kuadrat', 'Diagram batang', 'B'],
+            ['Rasio pot bunga terhadap jumlah bunga adalah 1 : 5. Jika terdapat 8 pot bunga, berapa jumlah seluruh bunga?', '30 bunga', '35 bunga', '40 bunga', '45 bunga', 'C'],
+            ['Rasio buku terhadap pulpen Ani adalah 3 : 4. Jika Ani memiliki 12 buku, berapa jumlah pulpennya?', '12', '14', '16', '20', 'C'],
+            ['Jika satu teko teh manis membutuhkan 125 gram gula pasir, berapa gula pasir yang dibutuhkan untuk 8 teko?', '800 gram', '900 gram', '1.000 gram', '1.200 gram', 'C'],
+            ['Perbandingan antara dua besaran dapat disederhanakan dengan cara...', 'Mengalikan kedua besaran dengan angka nol', 'Membagi kedua besaran dengan FPB yang sama', 'Menjumlahkan kedua besaran', 'Mengurangi besaran pertama dengan besaran kedua', 'B']
+        ]);
+
+        const bahasaIndonesiaQuestions = makeQuestions('Bahasa Indonesia', [
+            ['Cerita rakyat yang dipercaya pernah terjadi dan biasanya berkaitan dengan asal-usul suatu tempat, tokoh, atau peristiwa dinamakan...', 'Mitos', 'Legenda', 'Fabel', 'Sage', 'B'],
+            ['Pada awalnya, cerita legenda berkembang di tengah masyarakat secara...', 'Tertulis dalam prasasti', 'Lisan', 'Cetak', 'Digital', 'B'],
+            ['Unsur-unsur dalam cerita legenda meliputi...', 'Tema, tokoh, alur, latar, dan amanat', 'Judul, pengarang, penerbit, dan harga', 'Pembuka, isi, penutup, dan daftar pustaka', 'Kata sifat, kata benda, dan kata kerja', 'A'],
+            ['Berikut yang bukan merupakan ciri-ciri cerita legenda adalah...', 'Mengandung unsur keajaiban atau peristiwa luar biasa', 'Tokohnya dapat berupa manusia, pahlawan, raja, atau tokoh yang dipercaya pernah hidup', 'Ditulis berdasarkan data ilmiah dan riset laboratorium', 'Diceritakan secara turun-temurun dari generasi ke generasi', 'C'],
+            ['Legenda yang menceritakan asal mula terbentuknya suatu daerah, tempat, gunung, atau danau disebut legenda...', 'Keagamaan', 'Alam Gaib', 'Asal Usul Tempat', 'Perseorangan', 'C'],
+            ['Contoh cerita yang termasuk jenis legenda Asal Usul Tempat adalah...', 'Kisah Wali Songo', 'Legenda Nyai Roro Kidul', 'Danau Toba dan Tangkuban Perahu', 'Si Pitung dan Jaka Tingkir', 'C'],
+            ['Legenda yang menceritakan tokoh atau peristiwa yang berkaitan dengan penyebaran agama dinamakan legenda...', 'Keagamaan', 'Perseorangan', 'Alam Gaib', 'Asal Usul Tempat', 'A'],
+            ['Kisah Sunan Kalijaga dan Sunan Giri termasuk jenis legenda...', 'Alam Gaib', 'Perseorangan', 'Keagamaan', 'Asal Usul Tempat', 'C'],
+            ['Legenda yang menceritakan pengalaman seseorang yang berkaitan dengan makhluk halus atau peristiwa gaib adalah legenda...', 'Perseorangan', 'Alam Gaib', 'Keagamaan', 'Asal Usul Tempat', 'B'],
+            ['Legenda Perseorangan menceritakan tentang...', 'Terbentuknya gunung dan danau', 'Penyebaran agama Islam oleh para wali', 'Tokoh tertentu yang dipercaya pernah hidup dan memiliki jasa atau keistimewaan', 'Pengalaman bertemu dengan makhluk halus', 'C'],
+            ['Informasi yang benar-benar terjadi atau sesuai kenyataan serta dapat dibuktikan kebenarannya dinamakan...', 'Opini', 'Fakta', 'Mitos', 'Gosip', 'B'],
+            ['Ciri utama kalimat fakta adalah...', 'Bersifat subjektif', 'Berisi pendapat seseorang', 'Bersifat objektif dan memuat data, angka, waktu, atau tempat yang jelas', 'Menggunakan kata-kata seperti sebaiknya dan menurut saya', 'C'],
+            ['Kalimat berikut yang merupakan contoh kalimat fakta adalah...', 'Candi Borobudur adalah candi terindah di Indonesia.', 'Indonesia merdeka pada tanggal 17 Agustus 1945.', 'Yogyakarta adalah kota wisata yang paling menarik.', 'Bakso adalah makanan yang paling enak.', 'B'],
+            ['Kalimat “Air membeku pada suhu 0°C” termasuk jenis kalimat...', 'Opini', 'Fakta', 'Slogan', 'Imbauan', 'B'],
+            ['Pendapat, pikiran, atau perasaan seseorang tentang suatu hal yang kebenarannya dapat berbeda-beda disebut...', 'Fakta', 'Data', 'Opini', 'Berita', 'C'],
+            ['Salah satu ciri kalimat opini adalah...', 'Bersifat subjektif dan belum tentu benar', 'Dapat dibuktikan kebenarannya secara ilmiah', 'Kebenarannya bersifat tetap', 'Tidak dipengaruhi oleh perasaan seseorang', 'A'],
+            ['Kalimat opini sering menggunakan kata-kata penanda seperti...', 'Pada tanggal, di kota, sebanyak', 'Menurut saya, sebaiknya, paling indah, tampaknya', 'Adalah, merupakan, yaitu', 'Disebabkan, mengakibatkan, oleh karena itu', 'B'],
+            ['Manakah yang merupakan contoh kalimat opini?', 'Candi Borobudur berada di Magelang, Jawa Tengah.', 'Menurut saya, Yogyakarta adalah kota wisata yang paling menarik.', 'Indonesia merdeka pada tahun 1945.', 'Air membeku pada suhu nol derajat Celsius.', 'B'],
+            ['Mengapa opini bersifat subjektif?', 'Karena berdasarkan data dan angka pasti', 'Karena dipengaruhi oleh perasaan atau penilaian seseorang', 'Karena kebenarannya tetap dan berlaku untuk semua orang', 'Karena dapat dibuktikan secara langsung', 'B'],
+            ['Perbedaan mendasar antara fakta dan opini terletak pada...', 'Fakta bersifat subjektif, sedangkan opini bersifat objektif', 'Fakta belum dapat dibuktikan, sedangkan opini dapat dibuktikan', 'Kebenaran fakta bersifat tetap, sedangkan kebenaran opini dapat berbeda-beda', 'Fakta berdasarkan pendapat, sedangkan opini berdasarkan kenyataan', 'C'],
+            ['Cerita Danau Toba dan Rawa Pening disampaikan turun-temurun. Hal ini menunjukkan ciri legenda yaitu...', 'Memiliki pengarang yang jelas', 'Berbentuk teks berita resmi', 'Diceritakan secara turun-temurun', 'Bersifat fakta ilmiah', 'C'],
+            ['Pesan moral atau nilai kehidupan dalam cerita legenda dapat dijadikan...', 'Bahan perdebatan', 'Teladan bagi pembaca atau pendengar', 'Hiasan semata', 'Bahan ajakan untuk memusuhi orang lain', 'B'],
+            ['Kalimat “Seharusnya pemerintah memasang lampu penerangan di jalan ini” termasuk jenis...', 'Fakta', 'Opini', 'Perintah', 'Berita', 'B'],
+            ['Tokoh legenda seperti Jaka Tingkir, Si Pitung, dan Ki Ageng Selo dikelompokkan dalam legenda...', 'Alam Gaib', 'Keagamaan', 'Perseorangan', 'Asal Usul Tempat', 'C'],
+            ['Memahami perbedaan fakta dan opini dalam teks bermanfaat agar kita menjadi pembaca yang...', 'Cerdas dan kritis', 'Cepat marah', 'Mudah terpengaruh', 'Acuh tak acuh', 'A']
+        ]);
+
+        let examQuestions = [];
+
+        function formatFractions(text) {
+            const digitMap = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9' };
+            const fractionGlyphs = {
+                '¼': ['1', '4'], '½': ['1', '2'], '¾': ['3', '4'],
+                '⅓': ['1', '3'], '⅔': ['2', '3'], '⅕': ['1', '5'],
+                '⅖': ['2', '5'], '⅗': ['3', '5'], '⅘': ['4', '5'],
+                '⅙': ['1', '6'], '⅚': ['5', '6'], '⅛': ['1', '8'],
+                '⅜': ['3', '8'], '⅝': ['5', '8'], '⅞': ['7', '8']
+            };
+
+            return text
+                .replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹]+)⁄([₀₁₂₃₄₅₆₇₈₉]+)/g, (_, numerator, denominator) => {
+                    const top = [...numerator].map(digit => digitMap[digit]).join('');
+                    const bottom = [...denominator].map(digit => digitMap[digit]).join('');
+                    return `<span class="frac"><span class="top">${top}</span><span class="bottom">${bottom}</span></span>`;
+                })
+                .replace(/[¼½¾⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]/g, fraction => {
+                    const [top, bottom] = fractionGlyphs[fraction];
+                    return `<span class="frac"><span class="top">${top}</span><span class="bottom">${bottom}</span></span>`;
+                })
+                .replace(/(\d+|\.\.\.)\/(\d+|\.\.\.)/g, (_, numerator, denominator) => {
+                    return `<span class="frac"><span class="top">${numerator}</span><span class="bottom">${denominator}</span></span>`;
+                });
+        }
+
+        const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwp66DVUir-9vx8p2HARrE0vP2Z6Lc4jQ94VrjTFOuSShBncvfjuR18Y4-b65w-u4on/exec";
+        
+        let studentData = {
+            nama: "",
+            kelas: "",
+            noAbsen: "",
+            tanggalLahir: "",
+            mapel: ""
+        };
+
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // { qIndex: 'A' | 'B' | 'C' | 'D' }
+        let userDoubts = {}; // { qIndex: boolean }
+        let timerInterval = null;
+        let totalSeconds = 60 * 60; // 60 minutes default duration
+        let tabSwitchWarnings = 0;
+        let examSubmitted = false;
+
+        function getScriptUrl() {
+            const savedUrl = localStorage.getItem('cbt_script_url');
+            const previousDefaultUrls = [
+                "https://script.google.com/macros/s/AKfycbxyzvuxelcLdL1AUo1urkHztoAWa8dufd6nJA4pafTSWUAuhtUrQT_GM-hN3iFcPy0iXQ/exec",
+                "https://script.google.com/macros/s/AKfycbyd_wQOJ2XnXzS3ESDnhipqAqL1BdPZzLTqDzFX_rdhlOQMIG7fxT5OKD5RmQC2fV8IDw/exec"
+            ];
+
+            if (!savedUrl || previousDefaultUrls.includes(savedUrl)) {
+                return DEFAULT_SCRIPT_URL;
+            }
+            return savedUrl;
+        }
+
+        function updateScriptBadgeStatus() {
+            const currentUrl = getScriptUrl();
+            const badge = document.getElementById('script-status-badge');
+            const statusBox = document.getElementById('modal-status-box');
+            const statusIcon = document.getElementById('modal-status-icon');
+            const statusText = document.getElementById('modal-status-text');
+
+            if (currentUrl) {
+                if (badge) {
+                    badge.textContent = "Script URL: Terhubung ✓";
+                    badge.className = "text-amber-400 font-bold";
+                }
+                
+                if (statusBox) {
+                    statusBox.className = "p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center gap-2 mb-4 font-semibold";
+                    statusIcon.className = "fa-solid fa-circle-check text-emerald-600 text-base";
+                    statusText.textContent = "Status: Web App URL Tersimpan & Siap Digunakan!";
+                }
+            } else {
+                if (badge) {
+                    badge.textContent = "Script URL: Belum Diatur ⚠️";
+                    badge.className = "text-rose-400 font-bold";
+                }
+
+                if (statusBox) {
+                    statusBox.className = "p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-center gap-2 mb-4 font-semibold";
+                    statusIcon.className = "fa-solid fa-triangle-exclamation text-amber-600 text-base";
+                    statusText.textContent = "Status: Belum ada Web App URL tersimpan. Hasil hanya ditampilkan secara lokal.";
+                }
+            }
+        }
+
+        function openScriptModal() {
+            document.getElementById('input-script-url').value = getScriptUrl();
+            updateScriptBadgeStatus();
+            document.getElementById('script-modal').classList.remove('hidden');
+        }
+
+        function closeScriptModal() {
+            document.getElementById('script-modal').classList.add('hidden');
+        }
+
+        function saveScriptUrl() {
+            const url = document.getElementById('input-script-url').value.trim();
+            if (url) {
+                localStorage.setItem('cbt_script_url', url);
+            } else {
+                localStorage.removeItem('cbt_script_url');
+            }
+            updateScriptBadgeStatus();
+            closeScriptModal();
+        }
+
+        function clearScriptUrl() {
+            localStorage.removeItem('cbt_script_url');
+            document.getElementById('input-script-url').value = "";
+            updateScriptBadgeStatus();
+        }
+
+        function handleStartExam(event) {
+            event.preventDefault();
+            
+            studentData.nama = document.getElementById('nama').value.trim();
+            studentData.kelas = document.getElementById('kelas').value;
+            studentData.noAbsen = document.getElementById('noAbsen').value.trim();
+            studentData.tanggalLahir = document.getElementById('tanggalLahir').value;
+            studentData.mapel = document.getElementById('mapel').value.trim();
+            examQuestions = studentData.mapel === 'IPAS'
+                ? ipasQuestions
+                : studentData.mapel === 'Bahasa Indonesia'
+                    ? bahasaIndonesiaQuestions
+                    : newMathQuestions;
+
+            if (!studentData.nama || !studentData.kelas || !studentData.noAbsen || !studentData.tanggalLahir || !studentData.mapel) {
+                return;
+            }
+
+            // Format tanggal lahir untuk tampilan
+            let formattedDate = studentData.tanggalLahir;
+            if (studentData.tanggalLahir) {
+                const parts = studentData.tanggalLahir.split('-');
+                if (parts.length === 3) {
+                    formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+            }
+
+            // Populate header details
+            document.getElementById('disp-student-name').textContent = studentData.nama;
+            document.getElementById('disp-student-class').textContent = studentData.kelas;
+            document.getElementById('disp-student-no').textContent = "Absen: " + (studentData.noAbsen.padStart(2, '0'));
+            document.getElementById('disp-mapel').textContent = studentData.mapel;
+            if (document.getElementById('disp-ttl')) {
+                document.getElementById('disp-ttl').textContent = "Tgl Lahir: " + formattedDate;
+            }
+
+            // Switch views
+            document.getElementById('portal-view').classList.add('hidden');
+            document.getElementById('exam-view').classList.remove('hidden');
+            document.getElementById('exam-view').classList.add('flex');
+
+            // Initialize CBT state
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            userDoubts = {};
+            tabSwitchWarnings = 0;
+            examSubmitted = false;
+            
+            buildNavigatorGrid();
+            renderQuestion(currentQuestionIndex);
+            startTimer();
+        }
+
+        function startTimer() {
+            totalSeconds = 60 * 60; // 60 minutes
+            updateTimerDisplay();
+
+            if (timerInterval) clearInterval(timerInterval);
+
+            timerInterval = setInterval(() => {
+                totalSeconds--;
+                updateTimerDisplay();
+
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    autoSubmitExam();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            const timerEl = document.getElementById('timer');
+            if (timerEl) {
+                timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                if (totalSeconds < 300) { // Less than 5 mins
+                    timerEl.classList.add('text-rose-400', 'animate-pulse');
+                }
+            }
+        }
+
+        function renderQuestion(index) {
+            const q = examQuestions[index];
+            document.getElementById('current-q-num').textContent = index + 1;
+            document.getElementById('total-q-num').textContent = examQuestions.length;
+            
+            const badgeEl = document.getElementById('question-section-badge');
+            if (badgeEl) {
+                badgeEl.textContent = q.section || 'Soal';
+            }
+
+            document.getElementById('question-text').innerHTML = formatFractions(q.question);
+
+            // Render Options or Input Field
+            const container = document.getElementById('options-container');
+            container.innerHTML = "";
+
+            if (q.type === 'short') {
+                const currentVal = userAnswers[index] || '';
+                const wrapper = document.createElement('div');
+                wrapper.className = "p-2 space-y-2";
+                wrapper.innerHTML = `
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider">Jawaban Singkat Anda:</label>
+                    <input type="text" id="short-answer-input" value="${currentVal}" placeholder="Ketik jawaban Anda di sini..." 
+                        oninput="handleShortAnswerInput(this.value)"
+                        class="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-300 focus:border-blue-500 rounded-xl text-base font-semibold focus:bg-white outline-none transition-all text-slate-800 shadow-inner">
+                    <p class="text-xs text-slate-500 flex items-center gap-1">
+                        <i class="fa-solid fa-circle-info text-blue-500"></i>
+                        <span>Penulisan huruf besar/kecil tidak mempengaruhi penilaian.</span>
+                    </p>
+                `;
+                container.appendChild(wrapper);
+            } else {
+                const selectedKey = userAnswers[index];
+                q.options.forEach(opt => {
+                    const isChecked = selectedKey === opt.key;
+                    const wrapper = document.createElement('div');
+                    wrapper.className = "custom-radio";
+
+                    wrapper.innerHTML = `
+                        <input type="radio" name="opt-${index}" id="opt-${index}-${opt.key}" value="${opt.key}" ${isChecked ? 'checked' : ''} class="hidden" onchange="selectOption('${opt.key}')">
+                        <label for="opt-${index}-${opt.key}" class="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 cursor-pointer transition-all duration-150">
+                            <span class="option-badge w-8 h-8 rounded-xl bg-slate-100 border border-slate-300 font-bold text-slate-700 flex items-center justify-center text-sm transition-all shadow-sm flex-shrink-0">
+                                ${opt.key}
+                            </span>
+                            <div class="text-sm sm:text-base text-slate-800 font-medium">
+                                ${formatFractions(opt.text)}
+                            </div>
+                        </label>
+                    `;
+                    container.appendChild(wrapper);
+                });
+            }
+
+            // Update Doubt Button UI
+            updateDoubtButtonUI();
+
+            // Navigation buttons visibility
+            document.getElementById('btn-prev').disabled = (index === 0);
+            
+            if (index === examQuestions.length - 1) {
+                document.getElementById('btn-next').classList.add('hidden');
+                document.getElementById('btn-finish').classList.remove('hidden');
+                document.getElementById('btn-finish').classList.add('flex');
+            } else {
+                document.getElementById('btn-next').classList.remove('hidden');
+                document.getElementById('btn-finish').classList.add('hidden');
+                document.getElementById('btn-finish').classList.remove('flex');
+            }
+
+            updateNavGridHighlight();
+        }
+
+        function handleShortAnswerInput(value) {
+            const trimmed = value.trim();
+            if (trimmed !== '') {
+                userAnswers[currentQuestionIndex] = trimmed;
+            } else {
+                delete userAnswers[currentQuestionIndex];
+            }
+            updateNavGridHighlight();
+        }
+
+        function selectOption(key) {
+            userAnswers[currentQuestionIndex] = key;
+            updateNavGridHighlight();
+        }
+
+        function toggleDoubtful() {
+            userDoubts[currentQuestionIndex] = !userDoubts[currentQuestionIndex];
+            updateDoubtButtonUI();
+            updateNavGridHighlight();
+        }
+
+        function updateDoubtButtonUI() {
+            const isDoubt = !!userDoubts[currentQuestionIndex];
+            const btn = document.getElementById('btn-doubt');
+            const icon = document.getElementById('doubt-icon');
+
+            if (isDoubt) {
+                btn.className = "text-xs font-semibold px-3 py-1.5 rounded-lg border border-amber-500 text-amber-900 bg-amber-300 hover:bg-amber-400 transition-all flex items-center gap-1.5 shadow-sm";
+                icon.className = "fa-solid fa-square-check text-amber-900";
+            } else {
+                btn.className = "text-xs font-semibold px-3 py-1.5 rounded-lg border border-amber-300 text-amber-700 bg-amber-50 hover:bg-amber-100 transition-all flex items-center gap-1.5";
+                icon.className = "fa-regular fa-square";
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion(currentQuestionIndex);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < examQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
+            }
+        }
+
+        function jumpToQuestion(index) {
+            currentQuestionIndex = index;
+            renderQuestion(currentQuestionIndex);
+        }
+
+        function buildNavigatorGrid() {
+            const grid = document.getElementById('nav-grid');
+            grid.innerHTML = "";
+
+            examQuestions.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `nav-btn-${idx}`;
+                btn.onclick = () => jumpToQuestion(idx);
+                btn.className = "w-full aspect-square rounded-xl text-xs font-bold transition-all border flex items-center justify-center shadow-sm relative";
+                btn.textContent = idx + 1;
+                grid.appendChild(btn);
+            });
+
+            updateNavGridHighlight();
+        }
+
+        function updateNavGridHighlight() {
+            examQuestions.forEach((q, idx) => {
+                const btn = document.getElementById(`nav-btn-${idx}`);
+                if (!btn) return;
+
+                const isCurrent = idx === currentQuestionIndex;
+                const isAnswered = userAnswers[idx] !== undefined;
+                const isDoubt = !!userDoubts[idx];
+
+                let bgClass = "bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200";
+
+                if (isDoubt) {
+                    bgClass = "bg-amber-400 border-amber-500 text-slate-900 shadow";
+                } else if (isAnswered) {
+                    bgClass = "bg-blue-600 border-blue-700 text-white shadow";
+                }
+
+                if (isCurrent) {
+                    btn.className = `w-full aspect-square rounded-xl text-xs font-bold transition-all border-2 border-slate-900 ring-2 ring-blue-400 flex items-center justify-center ${bgClass}`;
+                } else {
+                    btn.className = `w-full aspect-square rounded-xl text-xs font-bold transition-all border flex items-center justify-center ${bgClass}`;
+                }
+            });
+        }
+
+        function confirmSubmitExam() {
+            const answeredCount = Object.keys(userAnswers).length;
+            const totalCount = examQuestions.length;
+            const unansweredCount = totalCount - answeredCount;
+            const doubtCount = Object.values(userDoubts).filter(Boolean).length;
+
+            document.getElementById('finish-stat-answered').textContent = `${answeredCount} dari ${totalCount} Soal`;
+            document.getElementById('finish-stat-unanswered').textContent = `${unansweredCount} Soal`;
+            document.getElementById('finish-stat-doubtful').textContent = `${doubtCount} Soal`;
+
+            const warningEl = document.getElementById('finish-modal-warning-text');
+            if (unansweredCount > 0 || doubtCount > 0) {
+                warningEl.textContent = "Masih ada soal yang belum dijawab atau ragu-ragu. Apakah Anda yakin ingin mengakhiri ujian?";
+            } else {
+                warningEl.textContent = "Apakah Anda sudah yakin dengan semua jawaban Anda dan ingin mengakhiri ujian?";
+            }
+
+            document.getElementById('finish-confirm-modal').classList.remove('hidden');
+        }
+
+        function closeFinishModal() {
+            document.getElementById('finish-confirm-modal').classList.add('hidden');
+        }
+
+        function showTabWarningModal(isFinalWarning) {
+            const modal = document.getElementById('tab-warning-modal');
+            const iconWrap = document.getElementById('tab-warning-icon-wrap');
+            const icon = document.getElementById('tab-warning-icon');
+            const count = document.getElementById('tab-warning-count');
+            const title = document.getElementById('tab-warning-title');
+            const message = document.getElementById('tab-warning-message');
+            const button = document.getElementById('tab-warning-button');
+
+            if (isFinalWarning) {
+                iconWrap.className = "w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mx-auto mb-4";
+                icon.className = "fa-solid fa-ban";
+                count.textContent = "Peringatan 2 dari 2";
+                count.className = "text-xs font-extrabold uppercase tracking-widest text-rose-600 mb-2";
+                title.textContent = "Ujian Telah Diakhiri";
+                message.textContent = "Anda kembali berpindah tab setelah peringatan pertama. Ujian telah berakhir dan hasil pengerjaan sedang diproses.";
+                button.textContent = "Lihat Hasil";
+                button.className = "w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm rounded-xl shadow-md transition-all";
+            } else {
+                iconWrap.className = "w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mx-auto mb-4";
+                icon.className = "fa-solid fa-triangle-exclamation";
+                count.textContent = "Peringatan 1 dari 2";
+                count.className = "text-xs font-extrabold uppercase tracking-widest text-amber-600 mb-2";
+                title.textContent = "Jangan Berpindah Tab";
+                message.textContent = "Anda meninggalkan halaman ujian. Tetap berada di halaman ujian agar pengerjaan dapat berlangsung dengan tertib. Jika berpindah tab sekali lagi, ujian akan langsung diakhiri.";
+                button.textContent = "Saya Mengerti";
+                button.className = "w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm rounded-xl shadow-md transition-all";
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeTabWarningModal() {
+            document.getElementById('tab-warning-modal').classList.add('hidden');
+        }
+
+        function executeSubmitExam() {
+            closeFinishModal();
+            submitExam();
+        }
+
+        function autoSubmitExam() {
+            submitExam();
+        }
+
+        function submitExam() {
+            if (examSubmitted) return;
+            examSubmitted = true;
+            if (timerInterval) clearInterval(timerInterval);
+
+            // Calculate score
+            let correctCount = 0;
+            examQuestions.forEach((q, idx) => {
+                if (q.type === 'short') {
+                    const userVal = (userAnswers[idx] || '').trim().toLowerCase();
+                    if (userVal && q.acceptedAnswers.some(ans => ans.toLowerCase() === userVal)) {
+                        correctCount++;
+                    }
+                } else {
+                    const isCorrect = Array.isArray(q.correct)
+                        ? q.correct.includes(userAnswers[idx])
+                        : userAnswers[idx] === q.correct;
+                    if (isCorrect) {
+                        correctCount++;
+                    }
+                }
+            });
+
+            const score = Math.round((correctCount / examQuestions.length) * 100);
+
+            // Format tanggal lahir untuk ringkasan hasil
+            let formattedDate = studentData.tanggalLahir;
+            if (studentData.tanggalLahir) {
+                const parts = studentData.tanggalLahir.split('-');
+                if (parts.length === 3) {
+                    formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+            }
+
+            // Hide Exam View & Show Result View
+            document.getElementById('exam-view').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+
+            // Render Result Card
+            document.getElementById('res-nama').textContent = studentData.nama;
+            document.getElementById('res-kelas').textContent = `${studentData.kelas} / No. ${studentData.noAbsen}`;
+            document.getElementById('res-ttl').textContent = formattedDate;
+            document.getElementById('res-mapel').textContent = studentData.mapel;
+            document.getElementById('res-score').textContent = score;
+            document.getElementById('res-summary').textContent = `Benar ${correctCount} dari ${examQuestions.length} Soal`;
+
+            sendResultsToGoogleSheets(score, correctCount);
+        }
+
+        function sendResultsToGoogleSheets(score, correctCount) {
+            const scriptUrl = getScriptUrl();
+            const statusEl = document.getElementById('post-status-message');
+
+            if (!scriptUrl) {
+                statusEl.textContent = "ℹ️ Hasil disimpan secara lokal (Script URL belum terkonfigurasi).";
+                statusEl.className = "text-xs text-amber-600 mb-4 font-semibold";
+                return;
+            }
+
+            statusEl.textContent = "⏳ Mengirim rekap nilai ke Google Sheets...";
+            statusEl.className = "text-xs text-blue-600 mb-4 font-semibold animate-pulse";
+
+            const now = new Date();
+            const waktuSelesai = `${now.toLocaleDateString('id-ID')} ${now.toLocaleTimeString('id-ID')}`;
+
+            let formattedDate = studentData.tanggalLahir;
+            if (studentData.tanggalLahir) {
+                const parts = studentData.tanggalLahir.split('-');
+                if (parts.length === 3) {
+                    formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+            }
+
+            const payload = {
+                waktuSelesai: waktuSelesai,
+                nama: studentData.nama,
+                kelas: studentData.kelas,
+                noAbsen: studentData.noAbsen,
+                tanggalLahir: formattedDate,
+                mapel: studentData.mapel,
+                nilai: score,
+                ringkasan: `Benar ${correctCount} dari ${examQuestions.length} Soal`
+            };
+
+            fetch(scriptUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain;charset=UTF-8"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                statusEl.textContent = "Permintaan rekap telah dikirim. Periksa Google Sheets untuk memastikan data tersimpan.";
+                statusEl.className = "text-xs text-emerald-600 mb-4 font-semibold";
+            })
+            .catch(err => {
+                console.error("Gagal mengirim data:", err);
+                statusEl.textContent = "⚠️ Tidak dapat tersambung ke Google Sheets. Silakan cek koneksi internet.";
+                statusEl.className = "text-xs text-rose-600 mb-4 font-semibold";
+            });
+        }
+
+        function resetExam() {
+            if (timerInterval) clearInterval(timerInterval);
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('portal-view').classList.remove('hidden');
+        }
+
+        document.addEventListener('visibilitychange', function() {
+            const examView = document.getElementById('exam-view');
+            const resultView = document.getElementById('result-view');
+            const examIsActive = examView && !examView.classList.contains('hidden')
+                && resultView && resultView.classList.contains('hidden');
+
+            if (!document.hidden && examIsActive && !examSubmitted) {
+                tabSwitchWarnings++;
+                const isFinalWarning = tabSwitchWarnings >= 2;
+                showTabWarningModal(isFinalWarning);
+                if (isFinalWarning) {
+                    submitExam();
+                }
+            }
+        });
+
+        // Initialize script badge status on load
+        window.onload = function() {
+            updateScriptBadgeStatus();
+        };
+    </script>
+</body>
+</html>
